@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechZone | Future of Technology</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080d1a;
+    color: white;
+}
+
+header {
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0b1224;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #1e293b;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #00d9ff;
+}
+
+.logo span {
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #00d9ff;
+}
+
+.menu {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 150px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: radial-gradient(circle at 80% 40%, #102d50, #080d1a 60%);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.15;
+}
+
+.hero h1 span {
+    color: #00d9ff;
+}
+
+.hero p {
+    color: #aab6ca;
+    margin: 25px 0;
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #00d9ff;
+    color: #08111f;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-4px);
+}
+
+.hero-icon {
+    font-size: 180px;
+    filter: drop-shadow(0 0 30px #00d9ff);
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    50% { transform: translateY(-20px); }
+}
+
+section {
+    padding: 90px 8%;
+}
+
+.heading {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 45px;
+}
+
+.heading span {
+    color: #00d9ff;
+}
+
+.services {
+    background: #0c1426;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #111e35;
+    padding: 35px 25px;
+    border: 1px solid #243650;
+    border-radius: 15px;
+    text-align: center;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #00d9ff;
+    box-shadow: 0 0 25px #00d9ff22;
+}
+
+.card .icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #00d9ff;
+}
+
+.card p {
+    color: #aab6ca;
+    line-height: 1.7;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    color: #b5c1d4;
+    line-height: 1.9;
+}
+
+.contact {
+    background: #0c1426;
+}
+
+form {
+    max-width: 550px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    background: #111e35;
+    border: 1px solid #30425c;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #00d9ff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #080d1a;
+    color: #8290a8;
+    border-top: 1px solid #1e293b;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width: 768px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #0b1224;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 12px 0;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-icon {
+        font-size: 110px;
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Tech<span>Zone.</span></div>
+
+    <div class="menu" id="menu">☰</div>
+
+    <nav id="navbar">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Welcome To <span>TechZone</span></h1>
+        <p>
+            Explore the future of technology with TechZone.
+            We create modern digital experiences, innovative
+            websites and smart technology solutions.
+        </p>
+        <a href="#services" class="btn">Explore More →</a>
+    </div>
+
+    <div class="hero-icon">💻</div>
+</section>
+
+<section class="services" id="services">
+    <h2 class="heading">Our <span>Services</span></h2>
+
+    <div class="cards">
+        <div class="card reveal">
+            <div class="icon">💻</div>
+            <h3>Web Development</h3>
+            <p>Modern and responsive websites for your business.</p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">📱</div>
+            <h3>App Development</h3>
+            <p>Smart mobile applications with amazing features.</p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">🎨</div>
+            <h3>UI/UX Design</h3>
+            <p>Beautiful designs and smooth user experiences.</p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">🚀</div>
+            <h3>Digital Solutions</h3>
+            <p>Creative digital solutions to grow your business.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="heading">About <span>TechZone</span></h2>
+
+    <div class="about-content reveal">
+        <p>
+            TechZone is a modern technology platform focused on
+            innovation, creativity and digital transformation.
+            Our goal is to make technology simple, useful and
+            accessible for everyone. We believe in building
+            solutions that create a better digital future.
+        </p>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Us</span></h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 TechZone. All Rights Reserved.</p>
+    <p>Designed with ❤️ for Technology</p>
+</footer>
+
+<script>
+// Mobile Menu
+const menu = document.getElementById("menu");
+const navbar = document.getElementById("navbar");
+
+menu.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+    menu.textContent = navbar.classList.contains("active") ? "✕" : "☰";
+});
+
+// Close menu after clicking a link
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        menu.textContent = "☰";
+    });
+});
+
+// Scroll Animation
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+// Contact Form
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+
+    alert("Thank you " + name + "! Your message form is ready.");
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>
